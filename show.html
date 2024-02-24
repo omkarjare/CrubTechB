@@ -1,0 +1,35 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <title>My Order</title>
+{% endblock %}
+
+
+{% block content %}
+<h2>My Order</h2>
+<table class="table table-striped">
+    <tr>
+        <th>Order Id</th>
+        <th>Product Name</th>
+        <th>Model Name</th>
+        <th>Price</th>
+        <th>Delivery Date</th>
+        <th>Address</th>
+    </tr>
+    {% for i in data %}
+    <tr>
+        <td>{{i.oid}}</td>
+        <td>{{i.product}}</td>
+        <td>{{i.model}}</td>
+        <td>{{i.price}}</td>
+        <td>{{i.del_date}}</td>
+        <td>{{i.add}}</td>
+        <td>
+            <button type="submit"><a href="{% url 'update_url' i.pk%}"> Update </a></button>
+            <button type="submit"><a href="{% url 'delete_url' i.pk%}"> Delete </a></button>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
